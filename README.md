@@ -1,1 +1,1 @@
-# apoyo_emprendimiento_DGS
+# Proyecto de apoyo a los emprendedores
