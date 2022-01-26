@@ -8,4 +8,12 @@ use Illuminate\Database\Eloquent\Model;
 class PreRequisito extends Model
 {
     use HasFactory;
+
+    /**
+     * The database table used by the model.
+     *
+     * @var string
+     */
+    protected $table = 'pre_requisitos';
+    
 }

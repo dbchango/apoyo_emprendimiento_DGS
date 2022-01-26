@@ -8,4 +8,11 @@ use Illuminate\Database\Eloquent\Model;
 class Anexo extends Model
 {
     use HasFactory;
+
+    /**
+     * The database table used by the model.
+     *
+     * @var string
+     */
+    protected $table = 'anexos';
 }
