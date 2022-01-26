@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateAnexos extends Migration
+class CreateRequisitosTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,10 +13,12 @@ class CreateAnexos extends Migration
      */
     public function up()
     {
-        Schema::create('anexos', function (Blueprint $table) {
+        Schema::create('requisitos', function (Blueprint $table) {
             $table->id();
+            $table->float('costo', 10, 2);
             $table->string('contenido');
-            $table->foreignId('requisito_id')->constrained('requisitos');
+            $table->string('detalles');
+            $table->foreignId('organizaciones_regulatorias_id')->constrained('organizaciones_regulatorias');
             $table->timestamps();
         });
     }
@@ -28,6 +30,6 @@ class CreateAnexos extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('anexos');
+        Schema::dropIfExists('requisitos');
     }
 }

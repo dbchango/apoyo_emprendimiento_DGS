@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreatePreRequisitos extends Migration
+class CreateRequisitoCumplidosTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,10 +13,10 @@ class CreatePreRequisitos extends Migration
      */
     public function up()
     {
-        Schema::create('pre_requisitos', function (Blueprint $table) {
-
+        Schema::create('requisito_cumplidos', function (Blueprint $table) {
+            $table->id();
             $table->foreignId('requisito_id')->constrained('requisitos');
-            $table->foreignId('pre_requisito_id')->constrained('requisitos');
+            $table->foreignId('user_id')->constrained('users');
             $table->timestamps();
         });
     }
@@ -28,6 +28,6 @@ class CreatePreRequisitos extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('pre_requisitos');
+        Schema::dropIfExists('requisito_cumplidos');
     }
 }
