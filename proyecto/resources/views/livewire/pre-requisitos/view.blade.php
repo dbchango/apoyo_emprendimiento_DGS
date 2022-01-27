@@ -32,8 +32,8 @@
 						<thead class="thead">
 							<tr>
 								<td>#</td>
-								<th>Requisito Id</th>
-								<th>Pre Requisito Id</th>
+								<th>Requisito</th>
+								<th>Prerrequisito</th>
 								<td>ACTIONS</td>
 							</tr>
 						</thead>
@@ -41,8 +41,8 @@
 							@foreach($preRequisitos as $row)
 							<tr>
 								<td>{{ $loop->iteration }}</td>
-								<td>{{ $row->requisito_id }}</td>
-								<td>{{ $row->pre_requisito_id }}</td>
+								<td>{{ $row->requisito->nombre }}</td>
+								<td>{{ $row->Prerequisito->nombre }}</td>
 								<td width="90">
 								<div class="btn-group">
 									<button type="button" class="btn btn-info btn-sm dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">

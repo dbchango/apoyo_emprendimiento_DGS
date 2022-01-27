@@ -13,7 +13,7 @@ class Requisito extends Model
 
     protected $table = 'requisitos';
 
-    protected $fillable = ['costo','contenido','detalles','organizaciones_regulatorias_id'];
+    protected $fillable = ['costo', 'nombre', 'contenido','detalles','organizaciones_regulatorias_id'];
 
     /**
      * @return \Illuminate\Database\Eloquent\Relations\HasMany

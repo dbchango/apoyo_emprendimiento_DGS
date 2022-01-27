@@ -12,7 +12,7 @@ class Requisitos extends Component
     use WithPagination;
     public $selectedOrganizacion=null;
 	protected $paginationTheme = 'bootstrap';
-    public $selected_id, $keyWord, $costo, $contenido, $detalles, $organizaciones_regulatorias_id;
+    public $selected_id, $keyWord, $costo, $contenido, $nombre, $detalles, $organizaciones_regulatorias_id;
     public $updateMode = false;
 
     public function render()
@@ -22,7 +22,8 @@ class Requisitos extends Component
         return view('livewire.requisitos.view', [
             'requisitos' => Requisito::latest()
 						->orWhere('costo', 'LIKE', $keyWord)
-						->orWhere('contenido', 'LIKE', $keyWord)
+						->orWhere('nombre', 'LIKE', $keyWord)
+                        ->orWhere('contenido', 'LIKE', $keyWord)
 						->orWhere('detalles', 'LIKE', $keyWord)
 						->orWhere('organizaciones_regulatorias_id', 'LIKE', $keyWord)
 						->paginate(10),
@@ -40,6 +41,7 @@ class Requisitos extends Component
     private function resetInput()
     {
 		$this->costo = null;
+        $this->nombre = null;
 		$this->contenido = null;
 		$this->detalles = null;
 		$this->organizaciones_regulatorias_id = null;
@@ -49,6 +51,7 @@ class Requisitos extends Component
     {
         $this->validate([
 		'costo' => 'required',
+        'nombre' => 'required',
 		'contenido' => 'required',
 		'detalles' => 'required',
 		'organizaciones_regulatorias_id' => 'required',
@@ -56,6 +59,7 @@ class Requisitos extends Component
 
         Requisito::create([
 			'costo' => $this-> costo,
+            'nombre' => $this-> nombre,
 			'contenido' => $this-> contenido,
 			'detalles' => $this-> detalles,
 			'organizaciones_regulatorias_id' => $this-> organizaciones_regulatorias_id
@@ -72,6 +76,7 @@ class Requisitos extends Component
 
         $this->selected_id = $id;
 		$this->costo = $record-> costo;
+		$this->nombre = $record-> nombre;
 		$this->contenido = $record-> contenido;
 		$this->detalles = $record-> detalles;
 		$this->organizaciones_regulatorias_id = $record-> organizaciones_regulatorias_id;
@@ -84,6 +89,7 @@ class Requisitos extends Component
         $this->validate([
 		'costo' => 'required',
 		'contenido' => 'required',
+		'nombre' => 'required',
 		'detalles' => 'required',
 		'organizaciones_regulatorias_id' => 'required',
         ]);
@@ -93,6 +99,7 @@ class Requisitos extends Component
             $record->update([
 			'costo' => $this-> costo,
 			'contenido' => $this-> contenido,
+			'nombre' => $this-> nombre,
 			'detalles' => $this-> detalles,
 			'organizaciones_regulatorias_id' => $this-> organizaciones_regulatorias_id
             ]);

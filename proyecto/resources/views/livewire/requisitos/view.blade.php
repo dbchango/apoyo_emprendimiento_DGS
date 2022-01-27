@@ -33,9 +33,10 @@
 							<tr> 
 								<td>#</td> 
 								<th>Costo</th>
+								<th>Nombre</th>
 								<th>Contenido</th>
 								<th>Detalles</th>
-								<th>Organizaciones Regulatorias Id</th>
+								<th>Organización regulatoria</th>
 								<td>ACTIONS</td>
 							</tr>
 						</thead>
@@ -44,9 +45,10 @@
 							<tr>
 								<td>{{ $loop->iteration }}</td> 
 								<td>{{ $row->costo }}</td>
+								<td>{{ $row->nombre }}</td>
 								<td>{{ $row->contenido }}</td>
 								<td>{{ $row->detalles }}</td>
-								<td>{{ $row->organizaciones_regulatorias_id }}</td>
+								<td>{{ $row->organizacionesRegulatoria->nombre }}</td>
 								<td width="90">
 								<div class="btn-group">
 									<button type="button" class="btn btn-info btn-sm dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">

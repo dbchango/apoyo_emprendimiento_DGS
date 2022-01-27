@@ -5,6 +5,7 @@ namespace App\Http\Livewire;
 use Livewire\Component;
 use Livewire\WithPagination;
 use App\Models\PreRequisito;
+use App\Models\Requisito;
 
 class PreRequisitos extends Component
 {
@@ -22,6 +23,7 @@ class PreRequisitos extends Component
 						->orWhere('requisito_id', 'LIKE', $keyWord)
 						->orWhere('pre_requisito_id', 'LIKE', $keyWord)
 						->paginate(10),
+            'requisitos' => Requisito::all()
         ]);
     }
 

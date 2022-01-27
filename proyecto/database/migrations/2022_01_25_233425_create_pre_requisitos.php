@@ -14,7 +14,7 @@ class CreatePreRequisitos extends Migration
     public function up()
     {
         Schema::create('pre_requisitos', function (Blueprint $table) {
-
+            $table->id();
             $table->foreignId('requisito_id')->constrained('requisitos');
             $table->foreignId('pre_requisito_id')->constrained('requisitos');
             $table->timestamps();

@@ -10,14 +10,28 @@
             </div>
            <div class="modal-body">
 				<form>
+         
+
             <div class="form-group">
                 <label for="requisito_id"></label>
-                <input wire:model="requisito_id" type="text" class="form-control" id="requisito_id" placeholder="Requisito Id">@error('requisito_id') <span class="error text-danger">{{ $message }}</span> @enderror
+                <select wire:model="requisito_id" class="form-control" id="requisito_id" placeholder="Requisito">@error('requisito_id') <span class="error text-danger">{{ $message }}</span> @enderror
+                    <option>Selecciones el requisito</option>
+                    @foreach ($requisitos as $requisito)
+                        <option value="{{ $requisito->id }}">{{ $requisito->nombre }}</option>
+                    @endforeach
+                </select>
             </div>
             <div class="form-group">
                 <label for="pre_requisito_id"></label>
-                <input wire:model="pre_requisito_id" type="text" class="form-control" id="pre_requisito_id" placeholder="Pre Requisito Id">@error('pre_requisito_id') <span class="error text-danger">{{ $message }}</span> @enderror
+                <select wire:model="pre_requisito_id" class="form-control" id="pre_requisito_id" placeholder="Requisito">@error('pre_requisito_id') <span class="error text-danger">{{ $message }}</span> @enderror
+                    <option>Selecciones el prerrequisito</option>
+                    @foreach ($requisitos as $requisito)
+                        <option value="{{ $requisito->id }}">{{ $requisito->nombre }}</option>
+                    @endforeach
+                </select>
             </div>
+          
+
 
                 </form>
             </div>
