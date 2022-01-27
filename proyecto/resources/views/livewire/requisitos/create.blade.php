@@ -24,9 +24,13 @@
             </div>
             <div class="form-group">
                 <label for="organizaciones_regulatorias_id"></label>
-                <input wire:model="organizaciones_regulatorias_id" type="text" class="form-control" id="organizaciones_regulatorias_id" placeholder="Organizaciones Regulatorias Id">@error('organizaciones_regulatorias_id') <span class="error text-danger">{{ $message }}</span> @enderror
+                <select wire:model="organizaciones_regulatorias_id" class="form-control" id="organizaciones_regulatorias_id" placeholder="Organizaciones Regulatorias">@error('organizaciones_regulatorias_id') <span class="error text-danger">{{ $message }}</span> @enderror
+                    <option value="">Selecione la organización regulatoria</option>
+                    @foreach ($organizacionesRegulatoria as $organizacionesRegulatorias)
+                        <option value="{{$organizacionesRegulatorias ->id}}">{{$organizacionesRegulatorias->nombre}}</option>
+                    @endforeach
+                </select>
             </div>
-
                 </form>
             </div>
             <div class="modal-footer">

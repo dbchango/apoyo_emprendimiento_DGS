@@ -5,17 +5,19 @@ namespace App\Http\Livewire;
 use Livewire\Component;
 use Livewire\WithPagination;
 use App\Models\Requisito;
+use App\Models\OrganizacionesRegulatoria;
 
 class Requisitos extends Component
 {
     use WithPagination;
-
+    public $selectedOrganizacion=null;
 	protected $paginationTheme = 'bootstrap';
     public $selected_id, $keyWord, $costo, $contenido, $detalles, $organizaciones_regulatorias_id;
     public $updateMode = false;
 
     public function render()
     {
+       // dd(OrganizacionesRegulatoria::all());
 		$keyWord = '%'.$this->keyWord .'%';
         return view('livewire.requisitos.view', [
             'requisitos' => Requisito::latest()
@@ -24,17 +26,19 @@ class Requisitos extends Component
 						->orWhere('detalles', 'LIKE', $keyWord)
 						->orWhere('organizaciones_regulatorias_id', 'LIKE', $keyWord)
 						->paginate(10),
+            'organizacionesRegulatoria' => OrganizacionesRegulatoria::all(),
+
         ]);
     }
-	
+
     public function cancel()
     {
         $this->resetInput();
         $this->updateMode = false;
     }
-	
+
     private function resetInput()
-    {		
+    {
 		$this->costo = null;
 		$this->contenido = null;
 		$this->detalles = null;
@@ -50,13 +54,13 @@ class Requisitos extends Component
 		'organizaciones_regulatorias_id' => 'required',
         ]);
 
-        Requisito::create([ 
+        Requisito::create([
 			'costo' => $this-> costo,
 			'contenido' => $this-> contenido,
 			'detalles' => $this-> detalles,
 			'organizaciones_regulatorias_id' => $this-> organizaciones_regulatorias_id
         ]);
-        
+
         $this->resetInput();
 		$this->emit('closeModal');
 		session()->flash('message', 'Requisito Successfully created.');
@@ -66,12 +70,12 @@ class Requisitos extends Component
     {
         $record = Requisito::findOrFail($id);
 
-        $this->selected_id = $id; 
+        $this->selected_id = $id;
 		$this->costo = $record-> costo;
 		$this->contenido = $record-> contenido;
 		$this->detalles = $record-> detalles;
 		$this->organizaciones_regulatorias_id = $record-> organizaciones_regulatorias_id;
-		
+
         $this->updateMode = true;
     }
 
@@ -86,7 +90,7 @@ class Requisitos extends Component
 
         if ($this->selected_id) {
 			$record = Requisito::find($this->selected_id);
-            $record->update([ 
+            $record->update([
 			'costo' => $this-> costo,
 			'contenido' => $this-> contenido,
 			'detalles' => $this-> detalles,
