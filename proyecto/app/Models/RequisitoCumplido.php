@@ -7,12 +7,28 @@ use Illuminate\Database\Eloquent\Model;
 
 class RequisitoCumplido extends Model
 {
-    use HasFactory;
+	use HasFactory;
+
+    public $timestamps = true;
+
+    protected $table = 'requisito_cumplidos';
+
+    protected $fillable = ['requisito_id','user_id'];
 
     /**
-     * The database table used by the model.
-     *
-     * @var string
+     * @return \Illuminate\Database\Eloquent\Relations\HasOne
      */
-    protected $table = 'requisito_cumplidos';
+    public function requisito()
+    {
+        return $this->hasOne('App\Models\Requisito', 'id', 'requisito_id');
+    }
+
+    /**
+     * @return \Illuminate\Database\Eloquent\Relations\HasOne
+     */
+    public function user()
+    {
+        return $this->hasOne('App\Models\User', 'id', 'user_id');
+    }
+
 }

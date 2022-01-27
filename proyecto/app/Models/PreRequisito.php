@@ -7,13 +7,28 @@ use Illuminate\Database\Eloquent\Model;
 
 class PreRequisito extends Model
 {
-    use HasFactory;
+	use HasFactory;
+
+    public $timestamps = true;
+
+    protected $table = 'pre_requisitos';
+
+    protected $fillable = ['requisito_id','pre_requisito_id'];
 
     /**
-     * The database table used by the model.
-     *
-     * @var string
+     * @return \Illuminate\Database\Eloquent\Relations\HasOne
      */
-    protected $table = 'pre_requisitos';
-    
+    /*public function requisito()
+    {
+        return $this->hasOne('App\Models\Requisito', 'id', 'requisito_id');
+    }*/
+
+    /**
+     * @return \Illuminate\Database\Eloquent\Relations\HasOne
+     */
+    public function requisito()
+    {
+        return $this->hasOne('App\Models\Requisito', 'id', 'pre_requisito_id');
+    }
+
 }

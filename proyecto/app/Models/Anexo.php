@@ -1,4 +1,4 @@
-<?php
+<?php 
 
 namespace App\Models;
 
@@ -7,12 +7,20 @@ use Illuminate\Database\Eloquent\Model;
 
 class Anexo extends Model
 {
-    use HasFactory;
+	use HasFactory;
+	
+    public $timestamps = true;
 
-    /**
-     * The database table used by the model.
-     *
-     * @var string
-     */
     protected $table = 'anexos';
+
+    protected $fillable = ['contenido','requisito_id'];
+	
+    /**
+     * @return \Illuminate\Database\Eloquent\Relations\HasOne
+     */
+    public function requisito()
+    {
+        return $this->hasOne('App\Models\Requisito', 'id', 'requisito_id');
+    }
+    
 }
