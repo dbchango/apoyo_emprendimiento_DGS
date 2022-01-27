@@ -2,8 +2,6 @@
 <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
 <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 <link rel="stylesheet" href="{{ asset('css/login.css') }}" />
-<link rel="stylesheet" href="{{ asset('css/login.css') }}" />
-
 <x-guest-layout>
 <section class="h-100 gradient-form" style="background-color: #eee;">
   <div class="container py-5 h-100">
