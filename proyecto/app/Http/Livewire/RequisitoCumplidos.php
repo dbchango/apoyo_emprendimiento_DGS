@@ -5,6 +5,8 @@ namespace App\Http\Livewire;
 use Livewire\Component;
 use Livewire\WithPagination;
 use App\Models\RequisitoCumplido;
+use App\Models\Requisito;
+use App\Models\User;
 
 class RequisitoCumplidos extends Component
 {
@@ -22,6 +24,8 @@ class RequisitoCumplidos extends Component
 						->orWhere('requisito_id', 'LIKE', $keyWord)
 						->orWhere('user_id', 'LIKE', $keyWord)
 						->paginate(10),
+            'requisitos' => Requisito::all(),
+            'user' => User::all(),
         ]);
     }
 

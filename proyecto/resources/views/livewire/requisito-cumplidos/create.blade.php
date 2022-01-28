@@ -12,11 +12,19 @@
 				<form>
             <div class="form-group">
                 <label for="requisito_id"></label>
-                <input wire:model="requisito_id" type="text" class="form-control" id="requisito_id" placeholder="Requisito Id">@error('requisito_id') <span class="error text-danger">{{ $message }}</span> @enderror
+                <select wire:model="requisito_id" type="text" class="form-control" id="requisito_id" placeholder="Requisito">@error('requisito_id') <span class="error text-danger">{{ $message }}</span> @enderror
+                    @foreach ($requisitos as $requisito)
+                            <option value="{{ $requisito->id }}">{{ $requisito->nombre }}</option>
+                    @endforeach
+                </select>
             </div>
             <div class="form-group">
                 <label for="user_id"></label>
-                <input wire:model="user_id" type="text" class="form-control" id="user_id" placeholder="User Id">@error('user_id') <span class="error text-danger">{{ $message }}</span> @enderror
+                <select wire:model="user_id" type="text" class="form-control" id="user_id" placeholder="Usuario">@error('user_id') <span class="error text-danger">{{ $message }}</span> @enderror
+                    @foreach ($user as $user)
+                            <option value="{{ $user->id }}">{{ $user->nombre }}</option>
+                    @endforeach
+                </select>
             </div>
 
                 </form>
