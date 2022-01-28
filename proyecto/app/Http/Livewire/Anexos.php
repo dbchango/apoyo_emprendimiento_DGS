@@ -5,6 +5,7 @@ namespace App\Http\Livewire;
 use Livewire\Component;
 use Livewire\WithPagination;
 use App\Models\Anexo;
+use App\Models\Requisito;
 
 class Anexos extends Component
 {
@@ -22,6 +23,7 @@ class Anexos extends Component
 						->orWhere('contenido', 'LIKE', $keyWord)
 						->orWhere('requisito_id', 'LIKE', $keyWord)
 						->paginate(10),
+                        'requisitos' => Requisito::all(),
         ]);
     }
 	

@@ -3,7 +3,7 @@
     <div class="modal-dialog" role="document">
         <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title" id="exampleModalLabel">Create New Anexo</h5>
+                <h5 class="modal-title" id="exampleModalLabel">Crear Anexo</h5>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                      <span aria-hidden="true close-btn">×</span>
                 </button>
@@ -16,7 +16,11 @@
             </div>
             <div class="form-group">
                 <label for="requisito_id"></label>
-                <input wire:model="requisito_id" type="text" class="form-control" id="requisito_id" placeholder="Requisito Id">@error('requisito_id') <span class="error text-danger">{{ $message }}</span> @enderror
+                <select wire:model="requisito_id" type="text" class="form-control" id="requisito_id" placeholder="Requisito">@error('requisito_id') <span class="error text-danger">{{ $message }}</span> @enderror
+                    @foreach ($requisitos as $requisito)
+                            <option value="{{ $requisito->id }}">{{ $requisito->nombre }}</option>
+                    @endforeach
+                </select>
             </div>
 
                 </form>

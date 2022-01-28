@@ -33,7 +33,7 @@
 							<tr> 
 								<td>#</td> 
 								<th>Contenido</th>
-								<th>Requisito Id</th>
+								<th>Requisito</th>
 								<td>ACTIONS</td>
 							</tr>
 						</thead>
