@@ -19,7 +19,7 @@ class RequisitoCumplidos extends Component
     public function render()
     {
 		$keyWord = '%'.$this->keyWord .'%';
-        return view('livewire\requisito-cumplidos\view', [
+        return view('livewire.requisito-cumplidos.view', [
             'requisitoCumplidos' => RequisitoCumplido::latest()
 						->orWhere('requisito_id', 'LIKE', $keyWord)
 						->orWhere('user_id', 'LIKE', $keyWord)
