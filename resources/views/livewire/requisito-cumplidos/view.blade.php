@@ -25,8 +25,8 @@
 				</div>
 
 				<div class="card-body">
-						@include('livewire\requisito-cumplidos\create')
-						@include('livewire\requisito-cumplidos\update')
+						@include('livewire.requisito-cumplidos.create')
+						@include('livewire.requisito-cumplidos.update')
 				<div class="table-responsive">
 					<table class="table table-bordered table-sm">
 						<thead class="thead">
