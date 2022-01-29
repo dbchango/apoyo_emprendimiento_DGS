@@ -32,8 +32,8 @@
 						<thead class="thead">
 							<tr>
 								<td>#</td>
-								<th>Requisito Id</th>
-								<th>User Id</th>
+								<th>Requisito</th>
+								<th>User</th>
 								<td>ACTIONS</td>
 							</tr>
 						</thead>
