@@ -7,6 +7,7 @@ use Livewire\WithPagination;
 use App\Models\RequisitoCumplido;
 use App\Models\Requisito;
 use App\Models\User;
+use Illuminate\Support\Facades\Auth;
 
 class RequisitoCumplidos extends Component
 {
@@ -45,12 +46,11 @@ class RequisitoCumplidos extends Component
     {
         $this->validate([
 		'requisito_id' => 'required',
-		'user_id' => 'required',
         ]);
 
         RequisitoCumplido::create([
 			'requisito_id' => $this-> requisito_id,
-			'user_id' => $this-> user_id
+			'user_id' => Auth::user()->id
         ]);
 
         $this->resetInput();
@@ -64,7 +64,7 @@ class RequisitoCumplidos extends Component
 
         $this->selected_id = $id;
 		$this->requisito_id = $record-> requisito_id;
-		$this->user_id = $record-> user_id;
+		$this->user_id = Auth::user()->name;
 
         $this->updateMode = true;
     }
@@ -73,14 +73,13 @@ class RequisitoCumplidos extends Component
     {
         $this->validate([
 		'requisito_id' => 'required',
-		'user_id' => 'required',
         ]);
 
         if ($this->selected_id) {
 			$record = RequisitoCumplido::find($this->selected_id);
             $record->update([
 			'requisito_id' => $this-> requisito_id,
-			'user_id' => $this-> user_id
+			'user_id' => Auth::user()->id
             ]);
 
             $this->resetInput();

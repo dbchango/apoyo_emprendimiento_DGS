@@ -20,11 +20,7 @@
             </div>
             <div class="form-group">
                 <label for="user_id"></label>
-                <select wire:model="user_id" type="text" class="form-control" id="user_id" placeholder="Usuario">@error('user_id') <span class="error text-danger">{{ $message }}</span> @enderror
-                    @foreach ($user as $user)
-                            <option value="{{ $user->id }}">{{ $user->nombre }}</option>
-                    @endforeach
-                </select>
+                <input readonly value="{{ Auth::user()->name }}" wire:model="user_id" type="text" class="form-control" id="user_id" placeholder="Usuario">@error('user_id') <span class="error text-danger">{{ $message }}</span> @enderror
             </div>
 
                 </form>

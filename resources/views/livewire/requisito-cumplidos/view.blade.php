@@ -41,8 +41,8 @@
 							@foreach($requisitoCumplidos as $row)
 							<tr>
 								<td>{{ $loop->iteration }}</td>
-								<td>{{ $row->requisito_id }}</td>
-								<td>{{ $row->user_id }}</td>
+								<td>{{ $row->requisito->nombre }}</td>
+								<td>{{ $row->user->name }}</td>
 								<td width="90">
 								<div class="btn-group">
 									<button type="button" class="btn btn-info btn-sm dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
