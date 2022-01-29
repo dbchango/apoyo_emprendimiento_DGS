@@ -17,7 +17,7 @@ class OrganizacionesRegulatorias extends Component
     public function render()
     {
 		$keyWord = '%'.$this->keyWord .'%';
-        return view('livewire\organizaciones-regulatorias\view', [
+        return view('livewire.organizaciones-regulatorias.view', [
             'organizacionesRegulatorias' => OrganizacionesRegulatoria::latest()
 						->orWhere('nombre', 'LIKE', $keyWord)
 						->orWhere('direccion', 'LIKE', $keyWord)

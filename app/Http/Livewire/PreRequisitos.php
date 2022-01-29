@@ -18,7 +18,7 @@ class PreRequisitos extends Component
     public function render()
     {
 		$keyWord = '%'.$this->keyWord .'%';
-        return view('livewire\pre-requisitos\view', [
+        return view('livewire.pre-requisitos.view', [
             'preRequisitos' => PreRequisito::latest()
 						->orWhere('requisito_id', 'LIKE', $keyWord)
 						->orWhere('pre_requisito_id', 'LIKE', $keyWord)
