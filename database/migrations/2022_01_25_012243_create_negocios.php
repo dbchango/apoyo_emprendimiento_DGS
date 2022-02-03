@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateRequisitoCumplidosTable extends Migration
+class CreateNegocios extends Migration
 {
     /**
      * Run the migrations.
@@ -13,10 +13,13 @@ class CreateRequisitoCumplidosTable extends Migration
      */
     public function up()
     {
-        Schema::create('requisito_cumplidos', function (Blueprint $table) {
+        Schema::create('negocios', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('requisito_id')->constrained('requisitos');
-            $table->foreignId('negocio_id')->constrained('negocios');
+            $table->string('nombre');
+            $table->string('ubicacion');
+            $table->string('detalles');
+            $table->string('logo');
+            $table->foreignId('user_id')->constrained('users');
             $table->timestamps();
         });
     }
@@ -28,6 +31,6 @@ class CreateRequisitoCumplidosTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('requisito_cumplidos');
+        Schema::dropIfExists('negocios');
     }
 }
