@@ -16,89 +16,81 @@
     <link rel="dns-prefetch" href="//fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css?family=Nunito" rel="stylesheet">
 
+    <!-- Vendor CSS Files -->
+  <link href="assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+  <link href="assets/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
+  <link href="assets/vendor/boxicons/css/boxicons.min.css" rel="stylesheet">
+  <link href="assets/css/style.css" rel="stylesheet">
+
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
 	 @livewireStyles
 </head>
 <body>
+
+
+
+
+
     <div id="app">
-        <nav class="navbar navbar-expand-md navbar-light bg-white shadow-sm">
-            <div class="container">
-                <a class="navbar-brand" href="{{ url('/') }}">
-                    {{ config('app.name', 'Laravel') }}
-                </a>
-                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="{{ __('Toggle navigation') }}">
-                    <span class="navbar-toggler-icon"></span>
-                </button>
+        
+        <header id="header" class="d-flex align-items-center">
+            <div class="container d-flex align-items-center justify-content-between">
+        
+              <h1 class="logo"><a href="index.html">Emprender<span>.</span></a></h1>
+        
+                    <nav id="navbar" class="navbar">
+                        @if (Route::has('login'))
 
-                <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                    <!-- Left Side Of Navbar -->
-					@auth()
-                    <ul class="navbar-nav mr-auto">
-						<!--Nav Bar Hooks - Do not delete!!-->
-						<li class="nav-item">
-                            <a href="{{ url('/negocios') }}" class="nav-link"><i class="fab fa-laravel text-info"></i> Negocios</a> 
-                        </li>
-						<li class="nav-item">
-                            <a href="{{ url('/requisito_cumplidos') }}" class="nav-link"><i class="fab fa-laravel text-info"></i> Requisito_cumplidos</a> 
-                        </li>
-						<li class="nav-item">
-                            <a href="{{ url('/anexos') }}" class="nav-link"><i class="fab fa-laravel text-info"></i> Anexos</a> 
-                        </li>
-						<li class="nav-item">
-                            <a href="{{ url('/pre_requisitos') }}" class="nav-link"><i class="fab fa-laravel text-info"></i> Pre_requisitos</a>
-                        </li>
-						<li class="nav-item">
-                            <a href="{{ url('/requisitos') }}" class="nav-link"><i class="fab fa-laravel text-info"></i> Requisitos</a>
-                        </li>
-						<li class="nav-item">
-                            <a href="{{ url('/tipo_de_persona') }}" class="nav-link"><i class="fab fa-laravel text-info"></i> Tipo de personas</a>
-                        </li>
-						<li class="nav-item">
-                            <a href="{{ url('/organizaciones_regulatorias') }}" class="nav-link"><i class="fab fa-laravel text-info"></i> Organizaciones regulatorias</a>
-                        </li>
-                    </ul>
-					@endauth()
-
-                    <!-- Right Side Of Navbar -->
-                    <ul class="navbar-nav ml-auto">
-                        <!-- Authentication Links -->
-                        @guest
-                            @if (Route::has('login'))
-                                <li class="nav-item">
-                                    <a class="nav-link" href="{{ route('login') }}">{{ __('Login') }}</a>
-                                </li>
-                            @endif
-
-                            @if (Route::has('register'))
-                                <li class="nav-item">
-                                    <a class="nav-link" href="{{ route('register') }}">{{ __('Register') }}</a>
-                                </li>
-                            @endif
-                        @else
-                                <li class="nav-item dropdown">
-                                <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
-                                    {{ Auth::user()->name }}
-                                </a>
-
-                                <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
-                                    <a class="dropdown-item" href="{{ route('logout') }}"
-                                       onclick="event.preventDefault();
-                                                     document.getElementById('logout-form').submit();">
-                                        {{ __('Logout') }}
-                                    </a>
-
-                                    <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
-                                        @csrf
-                                    </form>
-                                </div>
+                        @auth()
+                        <ul class="navbar-nav mr-auto">
+                            <!--Nav Bar Hooks - Do not delete!!-->
+                            <li class="nav-item">
+                                <a href="{{ url('/negocios') }}" class="nav-link">Negocios</a> 
                             </li>
-                        @endguest
-                    </ul>
-                </div>
+                        </ul>
+                        @endauth()
+                            <!-- Right Side Of Navbar -->
+                        <ul class="navbar-nav ml-auto">
+                          <!-- Authentication Links -->
+                          @guest
+                              @if (Route::has('login'))
+                                  <li class="nav-item">
+                                      <a class="nav-link" href="{{ route('login') }}">{{ __('Login') }}</a>
+                                  </li>
+                              @endif
+        
+                              @if (Route::has('register'))
+                                  <li class="nav-item">
+                                      <a class="nav-link" href="{{ route('register') }}">{{ __('Register') }}</a>
+                                  </li>
+                              @endif
+                          @else
+                                  <li class="nav-item dropdown">
+                                  <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
+                                      {{ Auth::user()->name }}
+                                  </a>
+        
+                                  <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
+                                      <a class="dropdown-item" href="{{ route('logout') }}"
+                                         onclick="event.preventDefault();
+                                                       document.getElementById('logout-form').submit();">
+                                          {{ __('Logout') }}
+                                      </a>
+        
+                                      <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
+                                          @csrf
+                                      </form>
+                                  </div>
+                              </li>
+                          @endguest
+                      </ul>
+                        @endif
+                        <i class="bi bi-list mobile-nav-toggle"></i>
+                    </nav>
+        
             </div>
-        </nav>
-
+          </header><!-- End Header -->
         <main class="py-2">
             @yield('content')
         </main>
