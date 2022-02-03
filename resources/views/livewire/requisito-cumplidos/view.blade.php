@@ -7,7 +7,7 @@
 					<div style="display: flex; justify-content: space-between; align-items: center;">
 						<div class="float-left">
 							<h4><i class="fab fa-laravel text-info"></i>
-							Requisito Cumplido Listing </h4>
+							Listado de requisitos cumplidos </h4>
 						</div>
 						<div wire:poll.60s>
 							<code><h5>{{ now()->format('H:i:s') }} UTC</h5></code>
@@ -19,21 +19,21 @@
 							<input wire:model='keyWord' type="text" class="form-control" name="search" id="search" placeholder="Search Requisito Cumplidos">
 						</div>
 						<div class="btn btn-sm btn-info" data-toggle="modal" data-target="#exampleModal">
-						<i class="fa fa-plus"></i>  Add Requisito Cumplidos
+						<i class="fa fa-plus"></i>  Agregar Requisito Cumplidos
 						</div>
 					</div>
 				</div>
 
 				<div class="card-body">
-						@include('livewire.requisito-cumplidos.create')
-						@include('livewire.requisito-cumplidos.update')
+						@include('livewire\requisito-cumplidos\create')
+						@include('livewire\requisito-cumplidos\update')
 				<div class="table-responsive">
 					<table class="table table-bordered table-sm">
 						<thead class="thead">
 							<tr>
 								<td>#</td>
-								<th>Requisito</th>
-								<th>Negocio</th>
+								<th>Requisito Id</th>
+								<th>User Id</th>
 								<td>ACTIONS</td>
 							</tr>
 						</thead>
@@ -41,8 +41,8 @@
 							@foreach($requisitoCumplidos as $row)
 							<tr>
 								<td>{{ $loop->iteration }}</td>
-								<td>{{ $row->requisito->nombre }}</td>
-								<td>{{ $row->negocio->name }}</td>
+								<td>{{ $row->requisito_id }}</td>
+								<td>{{ $row->user_id }}</td>
 								<td width="90">
 								<div class="btn-group">
 									<button type="button" class="btn btn-info btn-sm dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">

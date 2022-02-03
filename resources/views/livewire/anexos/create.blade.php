@@ -17,7 +17,6 @@
             <div class="form-group">
                 <label for="requisito_id"></label>
                 <select wire:model="requisito_id" type="text" class="form-control" id="requisito_id" placeholder="Requisito">@error('requisito_id') <span class="error text-danger">{{ $message }}</span> @enderror
-                    <option>Seleccione un requisito</option>
                     @foreach ($requisitos as $requisito)
                             <option value="{{ $requisito->id }}">{{ $requisito->nombre }}</option>
                     @endforeach
@@ -27,8 +26,8 @@
                 </form>
             </div>
             <div class="modal-footer">
-                <button type="button" class="btn btn-secondary close-btn" data-dismiss="modal">Close</button>
-                <button type="button" wire:click.prevent="store()" class="btn btn-primary close-modal">Save</button>
+                <button type="button" class="btn btn-secondary close-btn" data-dismiss="modal">Cancelar</button>
+                <button type="button" wire:click.prevent="store()" class="btn btn-primary close-modal">Guardar</button>
             </div>
         </div>
     </div>
