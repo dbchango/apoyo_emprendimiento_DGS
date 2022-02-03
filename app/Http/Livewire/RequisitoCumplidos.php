@@ -2,11 +2,11 @@
 
 namespace App\Http\Livewire;
 
+use App\Models\Negocio;
 use Livewire\Component;
 use Livewire\WithPagination;
 use App\Models\RequisitoCumplido;
 use App\Models\Requisito;
-use App\Models\User;
 use Illuminate\Support\Facades\Auth;
 
 class RequisitoCumplidos extends Component
@@ -14,7 +14,7 @@ class RequisitoCumplidos extends Component
     use WithPagination;
 
 	protected $paginationTheme = 'bootstrap';
-    public $selected_id, $keyWord, $requisito_id, $user_id;
+    public $selected_id, $keyWord, $requisito_id, $negocio_id;
     public $updateMode = false;
 
     public function render()
@@ -23,10 +23,10 @@ class RequisitoCumplidos extends Component
         return view('livewire.requisito-cumplidos.view', [
             'requisitoCumplidos' => RequisitoCumplido::latest()
 						->orWhere('requisito_id', 'LIKE', $keyWord)
-						->orWhere('user_id', 'LIKE', $keyWord)
+						->orWhere('negocio_id', 'LIKE', $keyWord)
 						->paginate(10),
             'requisitos' => Requisito::all(),
-            'user' => User::all(),
+            'negocios' => Negocio::all(),
         ]);
     }
 
@@ -39,18 +39,19 @@ class RequisitoCumplidos extends Component
     private function resetInput()
     {
 		$this->requisito_id = null;
-		$this->user_id = null;
+		$this->negocio_id = null;
     }
 
     public function store()
     {
         $this->validate([
 		'requisito_id' => 'required',
+		'negocio_id' => 'required',
         ]);
 
         RequisitoCumplido::create([
 			'requisito_id' => $this-> requisito_id,
-			'user_id' => Auth::user()->id
+			'negocio_id' => $this-> negocio_id,
         ]);
 
         $this->resetInput();
@@ -64,7 +65,7 @@ class RequisitoCumplidos extends Component
 
         $this->selected_id = $id;
 		$this->requisito_id = $record-> requisito_id;
-		$this->user_id = Auth::user()->name;
+		$this->negocio_id = $record-> negocio_id;
 
         $this->updateMode = true;
     }
@@ -73,13 +74,14 @@ class RequisitoCumplidos extends Component
     {
         $this->validate([
 		'requisito_id' => 'required',
+		'negocio_id' => 'required',
         ]);
 
         if ($this->selected_id) {
 			$record = RequisitoCumplido::find($this->selected_id);
             $record->update([
 			'requisito_id' => $this-> requisito_id,
-			'user_id' => Auth::user()->id
+			'negocio_id' => $this-> negocio_id,
             ]);
 
             $this->resetInput();

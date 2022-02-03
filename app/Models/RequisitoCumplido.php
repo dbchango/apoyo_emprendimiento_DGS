@@ -13,7 +13,7 @@ class RequisitoCumplido extends Model
 
     protected $table = 'requisito_cumplidos';
 
-    protected $fillable = ['requisito_id','user_id'];
+    protected $fillable = ['requisito_id','negocio_id'];
 
     /**
      * @return \Illuminate\Database\Eloquent\Relations\HasOne
@@ -26,9 +26,9 @@ class RequisitoCumplido extends Model
     /**
      * @return \Illuminate\Database\Eloquent\Relations\HasOne
      */
-    public function user()
+    public function negocio()
     {
-        return $this->hasOne('App\Models\User', 'id', 'user_id');
+        return $this->hasOne('App\Models\Negocio', 'id', 'negocio_id');
     }
 
 }

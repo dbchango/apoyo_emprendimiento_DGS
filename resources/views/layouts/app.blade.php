@@ -37,6 +37,9 @@
                     <ul class="navbar-nav mr-auto">
 						<!--Nav Bar Hooks - Do not delete!!-->
 						<li class="nav-item">
+                            <a href="{{ url('/negocios') }}" class="nav-link"><i class="fab fa-laravel text-info"></i> Negocios</a> 
+                        </li>
+						<li class="nav-item">
                             <a href="{{ url('/requisito_cumplidos') }}" class="nav-link"><i class="fab fa-laravel text-info"></i> Requisito_cumplidos</a> 
                         </li>
 						<li class="nav-item">

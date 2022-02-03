@@ -20,10 +20,14 @@
                 </select>
             </div>
             <div class="form-group">
-                <label for="user_id"></label>
-                <input readonly value="{{ Auth::user()->name }}" wire:model="user_id" type="text" class="form-control" id="user_id" placeholder="Usuario">@error('user_id') <span class="error text-danger">{{ $message }}</span> @enderror
+                <label for="negocio_id"></label>
+                <select wire:model="negocio_id" type="text" class="form-control" id="negocio_id" placeholder="Requisito">@error('negocio_id') <span class="error text-danger">{{ $message }}</span> @enderror
+                    <option>Seleccione un negocio</option>
+                    @foreach ($negocios as $negocio)
+                            <option value="{{ $negocio->id }}">{{ $negocio->nombre }}</option>
+                    @endforeach
+                </select>
             </div>
-
                 </form>
             </div>
             <div class="modal-footer">
