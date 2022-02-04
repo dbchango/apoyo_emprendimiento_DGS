@@ -29,7 +29,7 @@
             </div>
             <div class="form-group">
                 <label for="user_id"></label>
-                <input wire:model="user_id" type="text" class="form-control" id="user_id" placeholder="User Id">@error('user_id') <span class="error text-danger">{{ $message }}</span> @enderror
+                <input wire:model="user_id" type="text" class="form-control" id="user_id" disabled placeholder="User Id">@error('user_id') <span class="error text-danger">{{ $message }} </span> @enderror
             </div>
 
                 </form>

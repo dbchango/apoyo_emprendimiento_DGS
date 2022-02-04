@@ -58,4 +58,12 @@ class User extends Authenticatable
     protected $appends = [
         'profile_photo_url',
     ];
+
+     /**
+     * @return \Illuminate\Database\Eloquent\Relations\HasMany
+     */
+    public function negocios()
+    {
+        return $this->hasMany('App\Models\Negocio','user_id','id');
+    }
 }
