@@ -6,20 +6,16 @@
 				<div class="card-header">
 					<div style="display: flex; justify-content: space-between; align-items: center;">
 						<div class="float-left">
-							<h4><i class="fab fa-laravel text-info"></i>
-							Listado de Negocios  </h4>
-						</div>
-						<div wire:poll.60s>
-							<code><h5>{{ now()->format('H:i:s') }} UTC</h5></code>
+							<h4>Negocios </h4>
+
 						</div>
 						@if (session()->has('message'))
 						<div wire:poll.4s class="btn btn-sm btn-success" style="margin-top:0px; margin-bottom:0px;"> {{ session('message') }} </div>
 						@endif
-						<div>
-							<input wire:model='keyWord' type="text" class="form-control" name="search" id="search" placeholder="Search Negocios">
-						</div>
 						<div class="btn btn-sm btn-info" data-toggle="modal" data-target="#exampleModal">
+
 						<i class="fa fa-plus"></i>  Agregar Negocios
+
 						</div>
 					</div>
 				</div>
@@ -27,7 +23,36 @@
 				<div class="card-body">
 						@include('livewire.negocios.create')
 						@include('livewire.negocios.update')
-				<div class="table-responsive">
+
+						<h2 style="padding: 25px;" align ="center";> Negocios Registrados </h2>	
+
+				 <div class="container">
+					<div style="padding= 10px;" class="row">
+						@foreach($negocios as $row)
+						<div style="padding-bottom: 25px;" class="col-4">
+							<div  class="card" style="width: 18rem;">
+								<img style="width: 18rem;" class="card-img-top" src="{{ $row->logo }}" alt="Card image cap">
+							<div class="card-body">
+							<h1>{{ $row->nombre }}</h1>
+							<h2>{{ $row->ubicacion }}</h2>
+							<p class="card-text">{{ $row->detalles }}</p>
+										<div class="btn-group">
+												<button type="button" class="btn btn-info btn-sm dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+												Actions
+												</button>
+												<div class="dropdown-menu dropdown-menu-right">
+												<a data-toggle="modal" data-target="#updateModal" class="dropdown-item" wire:click="edit({{$row->id}})"><i class="fa fa-edit"></i> Edit </a>							 
+												<a class="dropdown-item" onclick="confirm('Confirm Delete Negocio id {{$row->id}}? \nDeleted Negocios cannot be recovered!')||event.stopImmediatePropagation()" wire:click="destroy({{$row->id}})"><i class="fa fa-trash"></i> Delete </a>   
+												</div>
+										</div>
+							</div>
+						</div>
+						</div>
+						@endforeach
+					</div>
+				</div>
+
+				<!-- <div class="table-responsive">
 					<table class="table table-bordered table-sm">
 						<thead class="thead">
 							<tr> 
@@ -36,7 +61,6 @@
 								<th>Ubicacion</th>
 								<th>Detalles</th>
 								<th>Logo</th>
-								<th>User Id</th>
 								<td>ACTIONS</td>
 							</tr>
 						</thead>
@@ -47,8 +71,7 @@
 								<td>{{ $row->nombre }}</td>
 								<td>{{ $row->ubicacion }}</td>
 								<td>{{ $row->detalles }}</td>
-								<td>{{ $row->logo }}</td>
-								<td>{{ $row->user_id }}</td>
+								<td><img width="100px" src='{{ $row->logo }}'></td>
 								<td width="90">
 								<div class="btn-group">
 									<button type="button" class="btn btn-info btn-sm dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -65,7 +88,7 @@
 					</table>						
 					{{ $negocios->links() }}
 					</div>
-				</div>
+				</div>   -->
 			</div>
 		</div>
 	</div>
