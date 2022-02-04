@@ -7,7 +7,7 @@
 					<div style="display: flex; justify-content: space-between; align-items: center;">
 						<div class="float-left">
 							<h4><i class="fab fa-laravel text-info"></i>
-							Anexo Listing </h4>
+							Listado de anexos </h4>
 						</div>
 						<div wire:poll.60s>
 							<code><h5>{{ now()->format('H:i:s') }} UTC</h5></code>
@@ -19,7 +19,7 @@
 							<input wire:model='keyWord' type="text" class="form-control" name="search" id="search" placeholder="Search Anexos">
 						</div>
 						<div class="btn btn-sm btn-info" data-toggle="modal" data-target="#exampleModal">
-						<i class="fa fa-plus"></i>  Add Anexos
+						<i class="fa fa-plus"></i>  Agregar Anexos
 						</div>
 					</div>
 				</div>
