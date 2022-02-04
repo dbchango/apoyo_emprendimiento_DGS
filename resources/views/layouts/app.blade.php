@@ -49,6 +49,12 @@
                                 <a href="{{ url('/negocios') }}" class="nav-link">Negocios</a> 
                             </li>
                         </ul>
+                        <ul class="navbar-nav mr-auto">
+                            <!--Nav Bar Hooks - Do not delete!!-->
+                            <li class="nav-item">
+                                <a href="{{ url('/dashboard') }}" class="nav-link">Emprendedor</a> 
+                            </li>
+                        </ul>
                         @endauth()
                             <!-- Right Side Of Navbar -->
                         <ul class="navbar-nav ml-auto">
@@ -101,5 +107,6 @@
 		$('#exampleModal').modal('hide');
 	});
 </script>
+
 </body>
 </html>
