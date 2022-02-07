@@ -197,7 +197,6 @@
               <i class="bi bi-headset"></i>
               <span data-purecounter-start="0" data-purecounter-end="1463" data-purecounter-duration="1" class="purecounter"></span>
               <p>Horas de trabajo</p>
-
             </div>
           </div>
         </div>
