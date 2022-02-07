@@ -1,4 +1,11 @@
-@extends('layouts.app')
+
+@extends('adminlte::page')
+
+@section('title', 'Prerrequisitos')
+
+@section('content_header')
+    <h1>Prerrequisitos</h1>
+@stop
 @section('content')
 <div class="container-fluid">
     <div class="row justify-content-center">
@@ -8,3 +15,4 @@
     </div>
 </div>
 @endsection
+@livewireScripts

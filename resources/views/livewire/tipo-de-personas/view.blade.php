@@ -7,7 +7,7 @@
 					<div style="display: flex; justify-content: space-between; align-items: center;">
 						<div class="float-left">
 							<h4><i class="fab fa-laravel text-info"></i>
-							Tipo De Persona Listing </h4>
+							Listado de tipos de personas </h4>
 						</div>
 						<div wire:poll.60s>
 							<code><h5>{{ now()->format('H:i:s') }} UTC</h5></code>
@@ -19,14 +19,14 @@
 							<input wire:model='keyWord' type="text" class="form-control" name="search" id="search" placeholder="Search Tipo De Personas">
 						</div>
 						<div class="btn btn-sm btn-info" data-toggle="modal" data-target="#exampleModal">
-						<i class="fa fa-plus"></i>  Add Tipo De Personas
+						<i class="fa fa-plus"></i>  Agregar Tipo De Personas
 						</div>
 					</div>
 				</div>
 
 				<div class="card-body">
-						@include('livewire.tipo-de-personas.create')
-						@include('livewire.tipo-de-personas.update')
+						@include('livewire\tipo-de-personas\create')
+						@include('livewire\tipo-de-personas\update')
 				<div class="table-responsive">
 					<table class="table table-bordered table-sm">
 						<thead class="thead">

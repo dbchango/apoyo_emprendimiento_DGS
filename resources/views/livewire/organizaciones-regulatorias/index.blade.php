@@ -1,4 +1,10 @@
-@extends('layouts.app')
+@extends('adminlte::page')
+
+@section('title', 'Organizaciones regulatorias')
+
+@section('content_header')
+    <h1>Organizaciones regulatorias</h1>
+@stop
 @section('content')
 <div class="container-fluid">
     <div class="row justify-content-center">
@@ -8,3 +14,4 @@
     </div>
 </div>
 @endsection
+@livewireScripts

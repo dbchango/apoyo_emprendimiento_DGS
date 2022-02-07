@@ -19,14 +19,15 @@ Route::get('/', function () {
 
 
 Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
-    return view('dashboard');
+    return view('livewire.emprendedor.index');
 })->name('dashboard');
 
 //Route Hooks - Do not delete//
-	Route::view('negocios', 'livewire.negocios.index')->middleware('auth');
+Route::view('negocios', 'livewire.negocios.index')->middleware('auth');
 Route::view('requisito_cumplidos', 'livewire.requisito-cumplidos.index')->middleware('auth');
 Route::view('anexos', 'livewire.anexos.index')->middleware('auth');
 Route::view('pre_requisitos', 'livewire.pre-requisitos.index')->middleware('auth');
 Route::view('requisitos', 'livewire.requisitos.index')->middleware('auth');
 Route::view('tipo_de_persona', 'livewire.tipo-de-personas.index')->middleware('auth');
 Route::view('organizaciones_regulatorias', 'livewire.organizaciones-regulatorias.index')->middleware('auth');
+//Route::view('emprendedor', 'livewire.emprendedor.index')->middleware('auth');
