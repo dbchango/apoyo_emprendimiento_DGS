@@ -303,11 +303,6 @@ return [
             'url'        => 'requisito_cumplidos',
         ],
         [
-            'text'       => 'Anexos',
-            'icon_color' => 'cyan',
-            'url'        => 'anexos',
-        ],
-        [
             'text'       => 'Prerrequisitos',
             'icon_color' => 'cyan',
             'url'        => 'pre_requisitos',
