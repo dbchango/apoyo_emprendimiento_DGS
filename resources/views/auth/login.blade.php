@@ -20,11 +20,11 @@
                         {{ session('status') }}
                     </div>
                 @endif
-                <form form method="POST" action="{{ route('login') }}">
+                <form  method="POST" action="{{ route('login') }}">
                 @csrf
                   <div class="form-outline mb-4">
-                    <x-jet-label for="email" value="{{ __('Correo electronico') }}" />
-                    <x-jet-input id="email" class="block mt-1 w-full" type="email" name="email" :value="old('email')" required autofocus />
+                    <label class="form-label" for="email">Correo electronico</label>
+                    <input type="email" id="email" class="form-control" name="email" :value="old('email')" required autofocus/>
                   </div>
 
                   <div class="form-outline mb-4">

@@ -32,7 +32,12 @@
                 @if (Route::has('login'))
                     <ul>
                         @auth
-                        <li><a href="{{ url('/dashboard') }}" class="nav-link scrollto active" >Dashboard</a></li>
+                          @if(Auth::user()->is_admin==true)
+                          <li><a href="{{ url('/admin') }}" class="nav-link scrollto active" >Administrar</a></li>
+                          @else
+                          <li><a href="{{ url('/dashboard') }}" class="nav-link scrollto active" >Dashboard</a></li>
+                          @endif
+                
                         @else
                         <li><a class="nav-link scrollto" href="{{ route('login') }}">Iniciar Sesion</a></li>
 
@@ -76,7 +81,11 @@
         @if (Route::has('login'))
             <ul>
                 @auth
-                <a href="{{ url('/dashboard') }}" class="btn-get-started scrollto" >Dashboard</a>
+                  @if(Auth::user()->is_admin==true)
+                         <a href="{{ url('/admin') }}" class="btn-get-started-admin scrollto" >Administrar</a>
+                  @else
+                        <a href="{{ url('/dashboard') }}" class="btn-get-started scrollto" >Dashboard</a>
+                  @endif
                 @else
                     <a class="btn-get-started scrollto" href="{{ route('login') }}">Iniciar Sesion</a>
                 @endauth
