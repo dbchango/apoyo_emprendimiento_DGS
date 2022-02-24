@@ -23,7 +23,7 @@
                 <select wire:model="negocio_id" type="text" class="form-control" id="negocio_id" placeholder="Requisito">@error('negocio_id') <span class="error text-danger">{{ $message }}</span> @enderror
                     <option>Seleccione un negocio</option>
                     @foreach ($negocios as $negocio)
-                            <option value="{{ $negocio->id }}">{{ $negocio->nombre }}</option>
+                            <option value="{{ $negocio->id }}">{{ $negocio->nombre }} / {{ $negocio->ubicacion }}</option>
                     @endforeach
                 </select>
             </div>

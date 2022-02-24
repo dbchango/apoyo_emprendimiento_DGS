@@ -12,11 +12,16 @@ use Illuminate\Support\Facades\Route;
 | contains the "web" middleware group. Now create something great!
 |
 */
+use App\Models\User;
+use App\Models\Negocio;
 
 Route::get('/', function () {
     if (auth()->check() && auth()->user()->is_admin==true)
             return view('admin.index');
-    return view('welcome');
+
+    $clientes = User::get()->count() - 1;
+    $negocios = Negocio::get()->count() ;
+    return view('welcome',compact('clientes','negocios'));
 });
 
 

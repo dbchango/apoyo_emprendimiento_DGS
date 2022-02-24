@@ -188,7 +188,7 @@
           <div class="col-lg-3 col-md-6">
             <div class="count-box">
               <i class="bi bi-emoji-smile"></i>
-              <span data-purecounter-start="0" data-purecounter-end="232" data-purecounter-duration="1" class="purecounter"></span>
+              <span data-purecounter-start="0" data-purecounter-end="{{$clientes}}" data-purecounter-duration="1" class="purecounter"></span>
               <p>Clientes activos</p>
             </div>
           </div>
@@ -196,8 +196,8 @@
           <div class="col-lg-3 col-md-6 mt-5 mt-md-0">
             <div class="count-box">
               <i class="bi bi-journal-richtext"></i>
-              <span data-purecounter-start="0" data-purecounter-end="521" data-purecounter-duration="1" class="purecounter"></span>
-              <p>Proyectos ejecutados</p>
+              <span data-purecounter-start="0" data-purecounter-end="{{$negocios}}" data-purecounter-duration="1" class="purecounter"></span>
+              <p>Negocios en ejecucion</p>
             </div>
           </div>
 
@@ -205,7 +205,7 @@
             <div class="count-box">
               <i class="bi bi-headset"></i>
               <span data-purecounter-start="0" data-purecounter-end="1463" data-purecounter-duration="1" class="purecounter"></span>
-              <p>Horas de trabajo</p>
+              <p>Negocios culminados</p>
             </div>
           </div>
         </div>
