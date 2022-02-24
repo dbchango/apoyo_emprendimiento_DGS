@@ -22,12 +22,14 @@
 						</div>
 					</div>
 				</div>
-				
+
 				<div class="card-body">
 						@include('livewire.negocios.create')
 						@include('livewire.negocios.update')
+                        @include('livewire.negocios.manager')
+                        @include('livewire.negocios.requisitos')
 
-						<h2 style="padding: 25px;" align ="center";> Negocios Registrados </h2>	
+						<h2 style="padding: 25px;" align ="center";> Negocios Registrados </h2>
 
 				 <div class="container">
 					<div style="padding= 10px;" class="row">
@@ -43,9 +45,12 @@
 												<button type="button" class="btn btn-info btn-sm dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
 												Actions
 												</button>
+                                                <button type="button" class="btn btn-warning"><a data-toggle="modal" data-target="#managerModal" wire:click="idNegocio({{$row->id}})">Gestionar</a></button>
+                                                <button type="button" class="btn btn-success"><a data-toggle="modal" data-target="#requisitosModal"  wire:click="idNegocio({{$row->id}})">Cumplimiento</a></button>
 												<div class="dropdown-menu dropdown-menu-right">
-												<a data-toggle="modal" data-target="#updateModal" class="dropdown-item" wire:click="edit({{$row->id}})"><i class="fa fa-edit"></i> Edit </a>							 
-												<a class="dropdown-item" onclick="confirm('Confirm Delete Negocio id {{$row->id}}? \nDeleted Negocios cannot be recovered!')||event.stopImmediatePropagation()" wire:click="destroy({{$row->id}})"><i class="fa fa-trash"></i> Delete </a>   
+                                                <a data-toggle="modal" data-target="#managerModal" class="dropdown-item" wire:click="idNegocio({{$row->id}})"><i class="fa fa-edit"></i> Gestionar </a>
+												<a data-toggle="modal" data-target="#updateModal" class="dropdown-item" wire:click="edit({{$row->id}})"><i class="fa fa-edit"></i> Edit </a>
+												<a class="dropdown-item" onclick="confirm('Confirm Delete Negocio id {{$row->id}}? \nDeleted Negocios cannot be recovered!')||event.stopImmediatePropagation()" wire:click="destroy({{$row->id}})"><i class="fa fa-trash"></i> Delete </a>
 												</div>
 										</div>
 							</div>
@@ -58,8 +63,8 @@
 				<!-- <div class="table-responsive">
 					<table class="table table-bordered table-sm">
 						<thead class="thead">
-							<tr> 
-								<td>#</td> 
+							<tr>
+								<td>#</td>
 								<th>Nombre</th>
 								<th>Ubicacion</th>
 								<th>Detalles</th>
@@ -70,7 +75,7 @@
 						<tbody>
 							@foreach($negocios as $row)
 							<tr>
-								<td>{{ $loop->iteration }}</td> 
+								<td>{{ $loop->iteration }}</td>
 								<td>{{ $row->nombre }}</td>
 								<td>{{ $row->ubicacion }}</td>
 								<td>{{ $row->detalles }}</td>
@@ -81,14 +86,14 @@
 									Actions
 									</button>
 									<div class="dropdown-menu dropdown-menu-right">
-									<a data-toggle="modal" data-target="#updateModal" class="dropdown-item" wire:click="edit({{$row->id}})"><i class="fa fa-edit"></i> Edit </a>							 
-									<a class="dropdown-item" onclick="confirm('Confirm Delete Negocio id {{$row->id}}? \nDeleted Negocios cannot be recovered!')||event.stopImmediatePropagation()" wire:click="destroy({{$row->id}})"><i class="fa fa-trash"></i> Delete </a>   
+									<a data-toggle="modal" data-target="#updateModal" class="dropdown-item" wire:click="edit({{$row->id}})"><i class="fa fa-edit"></i> Edit </a>
+									<a class="dropdown-item" onclick="confirm('Confirm Delete Negocio id {{$row->id}}? \nDeleted Negocios cannot be recovered!')||event.stopImmediatePropagation()" wire:click="destroy({{$row->id}})"><i class="fa fa-trash"></i> Delete </a>
 									</div>
 								</div>
 								</td>
 							@endforeach
 						</tbody>
-					</table>						
+					</table>
 					{{ $negocios->links() }}
 					</div>
 				</div>   -->
