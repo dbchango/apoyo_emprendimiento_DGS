@@ -8,20 +8,22 @@ use App\Models\Negocio;
 use App\Models\Requisito;
 use App\Models\RequisitoCumplido;
 use Illuminate\Support\Facades\Auth;
+use phpDocumentor\Reflection\PseudoTypes\False_;
 
 class Negocios extends Component
 {
     use WithPagination;
-
 	protected $paginationTheme = 'bootstrap';
     public $selected_id, $selectede_id,$keyWord, $nombre, $ubicacion, $detalles, $logo, $user_id,$requisito_id,$negocio_id;
     public $updateMode = false;
+    public $requisitos_no_cumplidos = [];
 
     public function render()
     {
-        $requisitos['requisitos'] = Requisito::all();
+        $this->selectede_id;
+        $requisitos['requisitos'] = [];
         $requisitosCumplidos['requisitosCumplidos'] = RequisitoCumplido::all()->where('negocio_id', '=', $this->selectede_id);
-		$keyWord = '%'.$this->keyWord .'%';
+        $keyWord = '%'.$this->keyWord .'%';
         return view('livewire.negocios.view', [
               'negocios' => Negocio::where([['user_id', '=', Auth::user()->id],
               ['nombre', 'LIKE', $keyWord],
@@ -29,8 +31,28 @@ class Negocios extends Component
               ['detalles', 'LIKE', $keyWord],
               ['logo', 'LIKE', $keyWord]
               ])->paginate(10),
+              
         ])->with($requisitos)
           ->with($requisitosCumplidos);
+    }
+
+
+    public function get_requisitos_incumplidos($negocio_id){
+        $negocio = Negocio::find($negocio_id);
+        $all_requisitos = Requisito::all();
+        $requisitos_incumplidos = $all_requisitos->filter(function($requisito) use ($negocio){
+            $is_requisito_cumplido = False;
+            foreach($negocio->requisitoCumplidos as $requisito_cumplido){
+                if($requisito_cumplido->requisito->nombre == $requisito->nombre){
+                    $is_requisito_cumplido = true; // el negocio ya cuenta con el requisito
+                    break; // saltamos a comprobar si el siguiente requisito ha sido cumplido
+                }
+            }
+            if(!$is_requisito_cumplido){
+                return $requisito;
+            }
+        });
+        return $requisitos_incumplidos;
     }
 
     public function cancel()
@@ -73,6 +95,7 @@ class Negocios extends Component
     public function idNegocio($id)
     {
         $this->selectede_id = $id;
+        
     }
 
     public function storeRequisito()
@@ -102,7 +125,6 @@ class Negocios extends Component
 
         $this->updateMode = true;
     }
-
 
     public function update()
     {
