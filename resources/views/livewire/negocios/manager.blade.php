@@ -15,11 +15,14 @@
                     <div class="form-group" >
                         <select wire:model="requisito_id"  class="form-control" type="text" name="requisito_id"  id="requisito_id">
                             <option>Seleccionar un requisito</option>
-                            @foreach ($requisitos as $requisito)
-                                <option value="{{$requisito->id}}">
-                                    {{$requisito->nombre}}
-                                </option>
-                            @endforeach
+                            @if($this->selectede_id)
+                                @foreach ($this->get_requisitos_incumplidos($this->selectede_id) as $requisito)
+                                    <option value="{{$requisito->id}}">
+                                        {{$requisito->nombre}}
+                                    </option>
+                                @endforeach    
+                            @endif
+                            
                         </select>@error('requisito_id') <span class="error text-danger">{{ $message }}</span> @enderror
                     </div>
                 </form>
