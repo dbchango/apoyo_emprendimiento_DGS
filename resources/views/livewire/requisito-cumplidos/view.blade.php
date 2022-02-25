@@ -15,6 +15,9 @@
 						@if (session()->has('message'))
 						<div wire:poll.4s class="btn btn-sm btn-success" style="margin-top:0px; margin-bottom:0px;"> {{ session('message') }} </div>
 						@endif
+						@if (session()->has('messageError'))
+						<div wire:poll.4s class="btn btn-sm btn-danger" style="margin-top:0px; margin-bottom:0px;"> {{ session('messageError') }} </div>
+						@endif
 						<div>
 							<input wire:model='keyWord' type="text" class="form-control" name="search" id="search" placeholder="Search Requisito Cumplidos">
 						</div>
@@ -25,15 +28,15 @@
 				</div>
 
 				<div class="card-body">
-						@include('livewire\requisito-cumplidos\create')
-						@include('livewire\requisito-cumplidos\update')
+						@include('livewire.requisito-cumplidos.create')
+						@include('livewire.requisito-cumplidos.update')
 				<div class="table-responsive">
 					<table class="table table-bordered table-sm">
 						<thead class="thead">
 							<tr>
 								<td>#</td>
-								<th>Requisito Id</th>
-								<th>User Id</th>
+								<th>Requisito </th>
+								<th>Negocio / Lugar</th>
 								<td>ACTIONS</td>
 							</tr>
 						</thead>
@@ -41,8 +44,8 @@
 							@foreach($requisitoCumplidos as $row)
 							<tr>
 								<td>{{ $loop->iteration }}</td>
-								<td>{{ $row->requisito_id }}</td>
-								<td>{{ $row->user_id }}</td>
+								<td>{{ $row->requisito->nombre }} /${{ $row->requisito->costo }} </td>
+								<td>{{ $row->negocio->nombre }} / {{ $row->negocio->ubicacion }}</td>
 								<td width="90">
 								<div class="btn-group">
 									<button type="button" class="btn btn-info btn-sm dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">

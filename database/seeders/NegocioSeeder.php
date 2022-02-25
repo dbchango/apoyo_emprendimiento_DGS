@@ -4,6 +4,7 @@ namespace Database\Seeders;
 
 use App\Models\Negocio;
 use Illuminate\Database\Seeder;
+use Illuminate\Support\Facades\DB;
 
 class NegocioSeeder extends Seeder
 {
@@ -14,7 +15,8 @@ class NegocioSeeder extends Seeder
      */
     public function run()
     {
-        Negocio::create([
+
+        DB::table('negocios')->insert([
             [
                 'nombre' => 'Papitas ricas',
                 'ubicacion' => 'Latacunga',

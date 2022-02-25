@@ -4,6 +4,7 @@ namespace Database\Seeders;
 
 use App\Models\TipoDePersona;
 use Illuminate\Database\Seeder;
+use Illuminate\Support\Facades\DB;
 
 class TipoPersonaSeeder extends Seeder
 {
@@ -14,7 +15,7 @@ class TipoPersonaSeeder extends Seeder
      */
     public function run()
     {
-        TipoDePersona::create([
+        DB::table('tipo_de_persona')->insert([
             [
                 'nombre' => 'Natural'
             ],

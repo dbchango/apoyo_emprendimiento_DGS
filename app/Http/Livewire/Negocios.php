@@ -155,8 +155,13 @@ class Negocios extends Component
     public function destroy($id)
     {
         if ($id) {
-            $record = Negocio::where('id', $id);
-            $record->delete();
+            try {
+                $record = Negocio::where('id', $id);
+                $record->delete();
+            } catch (\Exception $e) {
+                session()->flash('messageError', 'Algo anda mal, intentalo de nuevo');
+            }
+            
         }
     }
 

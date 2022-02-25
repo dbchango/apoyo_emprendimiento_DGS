@@ -45,8 +45,8 @@ return [
     |
     */
 
-    'logo' => '<b>Admin</b>LTE',
-    'logo_img' => 'vendor/adminlte/dist/img/AdminLTELogo.png',
+    'logo' => '<b>Emprender</b>.',
+    'logo_img' => 'vendor/adminlte/dist/img/logogrande.png',
     'logo_img_class' => 'brand-image img-circle elevation-3',
     'logo_img_xl' => null,
     'logo_img_xl_class' => 'brand-image-xs',
@@ -65,11 +65,11 @@ return [
     */
 
     'usermenu_enabled' => true,
-    'usermenu_header' => false,
-    'usermenu_header_class' => 'bg-primary',
-    'usermenu_image' => false,
+    'usermenu_header' => true,
+    'usermenu_header_class' => 'bg-dark',
+    'usermenu_image' => true,
     'usermenu_desc' => false,
-    'usermenu_profile_url' => false,
+    'usermenu_profile_url' => true,
 
     /*
     |--------------------------------------------------------------------------
@@ -85,8 +85,8 @@ return [
 
     'layout_topnav' => null,
     'layout_boxed' => null,
-    'layout_fixed_sidebar' => null,
-    'layout_fixed_navbar' => null,
+    'layout_fixed_sidebar' => true,
+    'layout_fixed_navbar' => true,
     'layout_fixed_footer' => null,
     'layout_dark_mode' => null,
 
@@ -122,7 +122,7 @@ return [
     */
 
     'classes_body' => '',
-    'classes_brand' => '',
+    'classes_brand' => 'bg-white',
     'classes_brand_text' => '',
     'classes_content_wrapper' => '',
     'classes_content_header' => '',
@@ -241,81 +241,46 @@ return [
             'type' => 'sidebar-menu-search',
             'text' => 'search',
         ],
-       
-        ['header' => 'account_settings'],
+        
+        ['header' => 'ÁREA DE TRABAJO'],
         [
-            'text' => 'profile',
-            'url'  => 'admin/settings',
-            'icon' => 'fas fa-fw fa-user',
-        ],
-        [
-            'text' => 'change_password',
-            'url'  => 'admin/settings',
-            'icon' => 'fas fa-fw fa-lock',
-        ],
-        [
-            'text'    => 'multilevel',
-            'icon'    => 'fas fa-fw fa-share',
+            'text'    => 'Gestión de requisitos',
+            'icon'    => 'fas fa-fw fa-clipboard-list',
+            'icon_color' => 'cyan',
             'submenu' => [
                 [
-                    'text' => 'level_one',
-                    'url'  => '#',
+                    'text'       => 'Requisitos',
+                    'icon_color' => 'cyan',
+                    'url'        => 'requisitos',
+                    'icon'    => 'fas fa-fw fa-file-alt',
                 ],
                 [
-                    'text'    => 'level_one',
-                    'url'     => '#',
-                    'submenu' => [
-                        [
-                            'text' => 'level_two',
-                            'url'  => '#',
-                        ],
-                        [
-                            'text'    => 'level_two',
-                            'url'     => '#',
-                            'submenu' => [
-                                [
-                                    'text' => 'level_three',
-                                    'url'  => '#',
-                                ],
-                                [
-                                    'text' => 'level_three',
-                                    'url'  => '#',
-                                ],
-                            ],
-                        ],
-                    ],
-                ],
-                [
-                    'text' => 'level_one',
-                    'url'  => '#',
+                    'text'       => 'Requisitos cumplidos',
+                    'icon_color' => 'cyan',
+                    'url'        => 'requisito_cumplidos',
+                    'icon'    => 'fas fa-fw fa-file-alt',
                 ],
             ],
         ],
-        ['header' => 'CLASES'],
-        [
-            'text'       => 'Requisitos',
-            'icon_color' => 'cyan',
-            'url'        => 'requisitos',
-        ],
-        [
-            'text'       => 'Requisitos cumplidos',
-            'icon_color' => 'cyan',
-            'url'        => 'requisito_cumplidos',
-        ],
+        
         [
             'text'       => 'Prerrequisitos',
             'icon_color' => 'cyan',
             'url'        => 'pre_requisitos',
+            'icon' => 'fas fa-fw fa-poll-h',
         ],
         [
             'text'       => 'Tipos de personas',
             'icon_color' => 'cyan',
             'url'        => 'tipo_de_persona',
+            'icon' => 'fas fa-fw fa-user',
         ],
         [
             'text'       => 'Organizaciones regulatorias',
             'icon_color' => 'cyan',
             'url'        => 'organizaciones_regulatorias',
+            'icon' => 'fas fa-fw fa-chess-rook',
+            
         ],
        
 

@@ -88,8 +88,13 @@ class OrganizacionesRegulatorias extends Component
     public function destroy($id)
     {
         if ($id) {
-            $record = OrganizacionesRegulatoria::where('id', $id);
-            $record->delete();
+            try {
+                $record = OrganizacionesRegulatoria::where('id', $id);
+                $record->delete();
+            } catch (\Exception $e) {
+                session()->flash('messageError', 'Algo anda mal, intentalo de nuevo');
+            }
+            
         }
     }
 }
