@@ -21,7 +21,7 @@ class RequisitoSeeder extends Seeder
                 'costo' => 23.50,
                 'contenido' => 'Content',
                 'detalles' => 'No details',
-                'organizaciones_regulatorias_id' => 2
+                'organizaciones_regulatorias_id' => 1
             ],
             [
                 'nombre' => 'Impuesto 2',
