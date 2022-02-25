@@ -23,11 +23,15 @@ Route::get('/', function () {
     $clientes = User::get()->count() - 1;
     $negocios = Negocio::get()->count() ;
     return view('welcome',compact('clientes','negocios'));
-});
+})->name('home');
 
 
 Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
+    if (auth()->check() && auth()->user()->is_admin==true) {
+        return redirect()->route('home');
+    }
     return view('livewire.emprendedor.index');
+
 })->name('dashboard');
 
 
@@ -44,4 +48,3 @@ Route::view('organizaciones_regulatorias', 'livewire.organizaciones-regulatorias
 
 Auth::routes();
 
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
