@@ -4,6 +4,7 @@ namespace Database\Seeders;
 
 use App\Models\OrganizacionesRegulatoria;
 use Illuminate\Database\Seeder;
+use Illuminate\Support\Facades\DB;
 
 class OrganizacionSeeder extends Seeder
 {
@@ -14,15 +15,20 @@ class OrganizacionSeeder extends Seeder
      */
     public function run()
     {
-        OrganizacionesRegulatoria::create([
+        DB::table('organizaciones_regulatorias')->insert(
             [
-                'nombre' => 'Servicio de Rentas Internas',
-                'direccion' => 'Maldona y Juan Benigno Vela'
-            ],
-            [
-                'nombre' => 'Municipio',
-                'direccion' => 'Parque Vicente Leon'
+                [
+    
+                    'nombre' => 'Servicio de Rentas Internas',
+                    'direccion' => 'Maldona y Juan Benigno Vela'
+                ],
+                [
+    
+                    'nombre' => 'Servicio de Rentas Internas',
+                    'direccion' => 'Maldona y Juan Benigno Vela'
+                ]
             ]
-        ]);
+        );
+
     }
 }

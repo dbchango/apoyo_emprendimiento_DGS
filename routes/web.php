@@ -14,6 +14,7 @@ use Illuminate\Support\Facades\Route;
 */
 use App\Models\User;
 use App\Models\Negocio;
+use Illuminate\Support\Facades\Auth;
 
 Route::get('/', function () {
     if (auth()->check() && auth()->user()->is_admin==true)
