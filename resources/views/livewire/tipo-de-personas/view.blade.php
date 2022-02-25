@@ -28,8 +28,8 @@
 				</div>
 
 				<div class="card-body">
-						@include('livewire\tipo-de-personas\create')
-						@include('livewire\tipo-de-personas\update')
+						@include('livewire.tipo-de-personas.create')
+						@include('livewire.tipo-de-personas.update')
 				<div class="table-responsive">
 					<table class="table table-bordered table-sm">
 						<thead class="thead">

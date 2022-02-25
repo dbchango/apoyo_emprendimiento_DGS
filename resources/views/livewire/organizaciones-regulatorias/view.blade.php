@@ -28,8 +28,8 @@
 				</div>
 
 				<div class="card-body">
-						@include('livewire\organizaciones-regulatorias\create')
-						@include('livewire\organizaciones-regulatorias\update')
+						@include('livewire.organizaciones-regulatorias.create')
+						@include('livewire.organizaciones-regulatorias.update')
 				<div class="table-responsive">
 					<table class="table table-bordered table-sm">
 						<thead class="thead">
