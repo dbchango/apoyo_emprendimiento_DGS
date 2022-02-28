@@ -12,15 +12,29 @@ use Illuminate\Support\Facades\Route;
 | contains the "web" middleware group. Now create something great!
 |
 */
+use App\Models\User;
+use App\Models\Negocio;
+use Illuminate\Support\Facades\Auth;
 
 Route::get('/', function () {
-    return view('welcome');
-});
+    if (auth()->check() && auth()->user()->is_admin==true)
+            return view('admin.index');
+
+    $clientes = User::get()->count() - 1;
+    $negocios = Negocio::get()->count() ;
+    return view('welcome',compact('clientes','negocios'));
+})->name('home');
 
 
 Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
+    if (auth()->check() && auth()->user()->is_admin==true) {
+        return redirect()->route('home');
+    }
     return view('livewire.emprendedor.index');
+
 })->name('dashboard');
+
+
 
 //Route Hooks - Do not delete//
 Route::view('negocios', 'livewire.negocios.index')->middleware('auth');
@@ -31,3 +45,6 @@ Route::view('requisitos', 'livewire.requisitos.index')->middleware('auth');
 Route::view('tipo_de_persona', 'livewire.tipo-de-personas.index')->middleware('auth');
 Route::view('organizaciones_regulatorias', 'livewire.organizaciones-regulatorias.index')->middleware('auth');
 //Route::view('emprendedor', 'livewire.emprendedor.index')->middleware('auth');
+
+Auth::routes();
+

@@ -26,13 +26,18 @@
   <header id="header" class="d-flex align-items-center">
     <div class="container d-flex align-items-center justify-content-between">
 
-      <h1 class="logo"><a href="index.html">Emprender<span>.</span></a></h1>
+      <h1 class="logo"><a href="{{ url('/') }}">Emprender<span>.</span></a></h1>
 
             <nav id="navbar" class="navbar">
                 @if (Route::has('login'))
                     <ul>
                         @auth
-                        <li><a href="{{ url('/dashboard') }}" class="nav-link scrollto active" >Dashboard</a></li>
+                          @if(Auth::user()->is_admin==true)
+                          <li><a href="{{ url('/admin') }}" class="nav-link scrollto active" >Administrar</a></li>
+                          @else
+                          <li><a href="{{ url('/dashboard') }}" class="nav-link scrollto active" >Dashboard</a></li>
+                          @endif
+                
                         @else
                         <li><a class="nav-link scrollto" href="{{ route('login') }}">Iniciar Sesion</a></li>
 
@@ -76,7 +81,11 @@
         @if (Route::has('login'))
             <ul>
                 @auth
-                <a href="{{ url('/dashboard') }}" class="btn-get-started scrollto" >Dashboard</a>
+                  @if(Auth::user()->is_admin==true)
+                         <a href="{{ url('/admin') }}" class="btn-get-started-admin scrollto" >Administrar</a>
+                  @else
+                        <a href="{{ url('/dashboard') }}" class="btn-get-started scrollto" >Dashboard</a>
+                  @endif
                 @else
                     <a class="btn-get-started scrollto" href="{{ route('login') }}">Iniciar Sesion</a>
                 @endauth
@@ -179,7 +188,7 @@
           <div class="col-lg-3 col-md-6">
             <div class="count-box">
               <i class="bi bi-emoji-smile"></i>
-              <span data-purecounter-start="0" data-purecounter-end="232" data-purecounter-duration="1" class="purecounter"></span>
+              <span data-purecounter-start="0" data-purecounter-end="{{$clientes}}" data-purecounter-duration="1" class="purecounter"></span>
               <p>Clientes activos</p>
             </div>
           </div>
@@ -187,8 +196,8 @@
           <div class="col-lg-3 col-md-6 mt-5 mt-md-0">
             <div class="count-box">
               <i class="bi bi-journal-richtext"></i>
-              <span data-purecounter-start="0" data-purecounter-end="521" data-purecounter-duration="1" class="purecounter"></span>
-              <p>Proyectos ejecutados</p>
+              <span data-purecounter-start="0" data-purecounter-end="{{$negocios}}" data-purecounter-duration="1" class="purecounter"></span>
+              <p>Negocios en ejecucion</p>
             </div>
           </div>
 
@@ -196,7 +205,7 @@
             <div class="count-box">
               <i class="bi bi-headset"></i>
               <span data-purecounter-start="0" data-purecounter-end="1463" data-purecounter-duration="1" class="purecounter"></span>
-              <p>Horas de trabajo</p>
+              <p>Negocios culminados</p>
             </div>
           </div>
         </div>

@@ -2,11 +2,10 @@
 
 namespace Database\Seeders;
 
-use App\Models\PreRequisito;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\DB;
 
-class PrerrequisitoSeeder extends Seeder
+class UsersAdmin extends Seeder
 {
     /**
      * Run the database seeds.
@@ -15,11 +14,11 @@ class PrerrequisitoSeeder extends Seeder
      */
     public function run()
     {
-        DB::table('pre_requisitos')->insert([
-            [
-                'requisito_id' => 1,
-                'pre_requisito_id' => 2
-            ]
+        DB::table('users')->insert([
+            'name'=>'Administrador',
+            'email'=>'isAdmin@gmail.com',
+            'password'=> bcrypt('password'),
+            'is_admin'=>true
         ]);
     }
 }

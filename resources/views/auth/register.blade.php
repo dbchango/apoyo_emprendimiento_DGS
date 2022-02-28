@@ -24,26 +24,26 @@
                 @endif
                 <form method="POST" action="{{ route('register') }}">
                 @csrf
-                  <div class="form-outline mb-4">
-                    <x-jet-label for="name" value="{{ __('Nombre de usuario') }}" />
-                    <x-jet-input id="name" class="block mt-1 w-full" type="text" name="name" :value="old('name')" required autofocus autocomplete="name" />
+                  <div class="form-outline mb-3">
+                    <label class="form-label" for="name">Nombre de usuario</label>
+                    <input id="name" class="form-control" type="text" name="name" :value="old('name')" required autofocus autocomplete="name" />
                   </div>
 
-                  <div class="form-outline mb-4">
-                        <x-jet-label for="email" value="{{ __('Correo electronico') }}" />
-                        <x-jet-input id="email" class="block mt-1 w-full" type="email" name="email" :value="old('email')" required />
+                  <div class="form-outline mb-3">
+                        <label class="form-label" for="email">Correo electronico</label>
+                        <input id="email" class="form-control" type="email" name="email" :value="old('email')" required />
                   </div>
-                  <div class="form-outline mb-4">
-                        <x-jet-label for="password" value="{{ __('Contraseña') }}" />
-                        <x-jet-input id="password" class="block mt-1 w-full" type="password" name="password" required autocomplete="new-password" />
+                  <div class="form-outline mb-3">
+                        <label class="form-label" for="password">Contraseña</label>
+                        <input id="password" class="form-control" type="password" name="password" required autocomplete="new-password" />
                   </div>
-                  <div class="form-outline mb-4">
-                        <x-jet-label for="password_confirmation" value="{{ __('Confirmar contraseña') }}" />
-                        <x-jet-input id="password_confirmation" class="block mt-1 w-full" type="password" name="password_confirmation" required autocomplete="new-password" />
+                  <div class="form-outline mb-3">
+                        <label class="form-label" for="password_confirmation">Confirmar contraseña</label>
+                        <input id="password_confirmation" class="form-control" type="password" name="password_confirmation" required autocomplete="new-password" />
                   </div>
                     @if (Laravel\Jetstream\Jetstream::hasTermsAndPrivacyPolicyFeature())
                         <div class="mt-4">
-                            <x-jet-label for="terms">
+                            <label for="terms">
                                 <div class="flex items-center">
                                     <x-jet-checkbox name="terms" id="terms"/>
 
@@ -54,13 +54,12 @@
                                         ]) !!}
                                     </div>
                                 </div>
-                            </x-jet-label>
+                            </label>
                         </div>
                     @endif
                     <div class="flex items-center justify-end mt-4">
-                        <x-jet-button class="ml-4">
-                            {{ __('Registrarme') }}
-                        </x-jet-button>
+                        <button type="submit" class="btn btn-dark">{{ __('Registrarme') }}</button>
+                        
                         <a class="underline text-sm text-gray-600 hover:text-gray-900" href="{{ route('login') }}">
                             {{ __('Ya estas registrado?') }}
                         </a>

@@ -20,16 +20,16 @@
                         {{ session('status') }}
                     </div>
                 @endif
-                <form form method="POST" action="{{ route('login') }}">
+                <form  method="POST" action="{{ route('login') }}">
                 @csrf
                   <div class="form-outline mb-4">
-                    <x-jet-label for="email" value="{{ __('Correo electronico') }}" />
-                    <x-jet-input id="email" class="block mt-1 w-full" type="email" name="email" :value="old('email')" required autofocus />
+                    <label class="form-label" for="email">Correo electronico</label>
+                    <input type="email" id="email" class="form-control" name="email" :value="old('email')" required autofocus/>
                   </div>
 
                   <div class="form-outline mb-4">
-                    <x-jet-label for="password" value="{{ __('Contraseña') }}" />
-                    <x-jet-input id="password" class="block mt-1 w-full" type="password" name="password" required autocomplete="current-password" />
+                    <label class="form-label" for="password">Contraseña</label>
+                    <input id="password" class="form-control" type="password" name="password" required autocomplete="current-password" />
                     
                   </div>
                   <div class="block mt-4">
@@ -39,9 +39,8 @@
                         </label>
                     </div>
                   <div class="text-center pt-1 mb-5 pb-1">
-                    <x-jet-button class="ml-4">
-                        {{ __('Ingresar') }}
-                    </x-jet-button></br>
+                    <button type="submit" class="btn btn-dark">{{ __('Ingresar') }}</button>
+                    </br>
                     @if (Route::has('password.request'))
                         <a class="underline text-sm text-gray-600 hover:text-gray-900" href="{{ route('password.request') }}">
                             {{ __('Has olvidado tu contraseña?') }}
